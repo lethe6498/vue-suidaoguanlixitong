@@ -7,4 +7,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style>
 /* 公共css */
+body,
+html,
+#app {
+  height: 100%;
+}
 </style>

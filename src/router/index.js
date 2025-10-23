@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Homeview/index.vue'
 // 导入布局组件 - 作为主要的页面容器
 import Layout from '../views/Layout.vue'
+import LoginInfo from '../views/LoginInfo/index.vue'
 
 /**
  * 创建路由器实例
@@ -13,6 +14,12 @@ const router = createRouter({
   // 使用HTML5 History API，URL不会带有#号
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      // 登录页面 - 独立路由，不使用Layout布局
+      path: '/LoginInfo',
+      name: 'LoginInfo',
+      component: LoginInfo,
+    },
     {
       // 根路由配置
       path: '/',
@@ -38,12 +45,6 @@ const router = createRouter({
           path: '/geological-info',
           name: 'geologicalInfo',
           component: () => import('../views/GeologicalInfo/index.vue'),
-        },
-        {
-          // 登录信息页面
-          path: '/login-info',
-          name: 'loginInfo',
-          component: () => import('../views/LoginInfo/index.vue'),
         },
         {
           // 项目信息页面
