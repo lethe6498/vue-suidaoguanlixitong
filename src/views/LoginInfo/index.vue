@@ -36,4 +36,25 @@ const user = reactive({
   username: '',
   password: '',
 })
+
+// 处理登录逻辑
+const handleLogin = () => {}
 </script>
+<style scoped>
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #2d3a4b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+.user {
+  position: relative;
+  width: 400px;
+  padding: 160px 35px 0;
+  margin: 0 auto;
+}
+</style>
