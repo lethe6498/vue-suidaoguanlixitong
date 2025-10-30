@@ -1,5 +1,11 @@
 const express = require('express')
 const app = express()
+
+// 解析 application/json
+app.use(express.json())
+// 解析 application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
+
 const router = require('./router')
 app.use('/api', router)
 //监听一个叫3000的端口

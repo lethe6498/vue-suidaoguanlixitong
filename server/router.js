@@ -14,5 +14,19 @@ router.post('/login', (req, res) => {
   //接受客户端的参数：usename，password
   const { username, password } = req.body
   const sql = 'select * from user where username=? and password=?'
+  SQLConnect(sql, [username, password], (result) => {
+    if (result.length > 0) {
+      res.send({
+        status: 200,
+        result,
+      })
+    } else {
+      //没有查询到数据
+      res.send({
+        status: 500,
+        msg: '用户名密码错误',
+      })
+    }
+  })
 })
 module.exports = router

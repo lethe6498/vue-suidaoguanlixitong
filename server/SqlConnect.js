@@ -11,7 +11,7 @@ const MySQLObj = {
 const pool = mysql.createPool(MySQLObj)
 function SQLConnect(sql, arr, callback) {
   //链接数据库
-  pool.getConnection((ERR, Connect) => {
+  pool.getConnection((err, connection) => {
     if (err) {
       console.log(err)
       return
