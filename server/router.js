@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const url = require('url')
 const SQLConnect = require('./SqlConnect.js')
+const jwt=require("jsonwebtoken")
+//导入密钥
+const jwtSecret=require("./jwtSecret.js")
 //添加接口
 /* router.get('/list', (req, res) => {
   res.send({
@@ -16,9 +19,18 @@ router.post('/login', (req, res) => {
   const sql = 'select * from user where username=? and password=?'
   SQLConnect(sql, [username, password], (result) => {
     if (result.length > 0) {
+      /* 生成token */
+      const token=jwt.sign({
+        id:result[0].id,
+        username:result[0].username,
+        permission:result[0].permission
+      },jwtSecret.secret)
+       
       res.send({
         status: 200,
-        result,
+      username:result[0].username,
+        permission:result[0].permission,
+        token
       })
     } else {
       //没有查询到数据

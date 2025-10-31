@@ -1,5 +1,4 @@
 const mysql = require('mysql')
-const { Connect } = require('vite')
 const MySQLObj = {
   //主机地址
   host: 'localhost',
