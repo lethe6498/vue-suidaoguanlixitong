@@ -32,13 +32,44 @@
 </template>
 <script setup>
 import { reactive } from 'vue'
+import api from '@/api/index.js'
+import { useLoginStore } from '@/stores/loginStore.js'
+import { useRouter } from 'vue-router'
+
+//登陆仓库对象
+const localStore = useLoginStore()
+//获取路由对象
+//声明用户信息
 const user = reactive({
   username: '',
   password: '',
 })
 
 // 处理登录逻辑
-const handleLogin = () => {}
+const handleLogin = () => {
+  console.log(user)
+  api
+    .getLogin({
+      username: user.username,
+      password: user.password,
+    })
+    .then((res) => {
+      console.log(res)
+      if (res.data.status === 200) {
+        console.log('登录成功', res.data)
+        // 可以在这里保存 token 和用户信息
+        localStore.token = res.data.token
+        localStore.username = res.data.username
+        localStore.permission = res.data.permission
+        // 跳转到主页等操作
+      } else {
+        ElMessage.error(res.data.msg)
+      }
+    })
+    .catch((error) => {
+      console.error('请求失败:', error)
+    })
+}
 </script>
 <style scoped>
 .login-container {

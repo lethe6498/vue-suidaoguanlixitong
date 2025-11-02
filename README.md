@@ -34,3 +34,6 @@
 2.Proxy(开发环境生效)
 二.后台
 1.cors解决跨域
+
+###JSON Web Token 入门教程
+https://ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html
