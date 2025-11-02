@@ -6,6 +6,7 @@
       </div>
       <el-form-item prop="username">
         <el-input
+          :prefix-icon="User"
           v-model="user.username"
           type="text"
           placeholder="请输入用户名"
@@ -14,6 +15,7 @@
       </el-form-item>
       <el-form-item prop="password">
         <el-input
+          :prefix-icon="Lock"
           v-model="user.password"
           type="text"
           placeholder="请输入密码"
@@ -31,6 +33,7 @@
   </div>
 </template>
 <script setup>
+import { User, Lock } from '@element-plus/icons-vue'
 import { reactive } from 'vue'
 import api from '@/api/index.js'
 import { useLoginStore } from '@/stores/loginStore.js'
@@ -39,6 +42,7 @@ import { useRouter } from 'vue-router'
 //登陆仓库对象
 const localStore = useLoginStore()
 //获取路由对象
+const router = useRouter()
 //声明用户信息
 const user = reactive({
   username: '',
@@ -62,6 +66,7 @@ const handleLogin = () => {
         localStore.username = res.data.username
         localStore.permission = res.data.permission
         // 跳转到主页等操作
+        router.push('/')
       } else {
         ElMessage.error(res.data.msg)
       }
@@ -87,5 +92,16 @@ const handleLogin = () => {
   width: 400px;
   padding: 160px 35px 0;
   margin: 0 auto;
+}
+/* 修改输入框前缀图标大小 */
+.user :deep(.el-input__prefix) {
+  font-size: 18px; /* 调整图标大小，默认是 14px */
+}
+.title {
+  font-size: 26px;
+  text-align: center;
+  color: #eee;
+  /* Element Plus large 尺寸默认是 22px */
+  margin-bottom: 22px;
 }
 </style>

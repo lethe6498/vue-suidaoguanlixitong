@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@element-plus/icons-vue':
+        specifier: ^2.3.2
+        version: 2.3.2(vue@3.5.22)
       axios:
         specifier: ^1.12.2
         version: 1.12.2
@@ -23,6 +26,9 @@ importers:
       pinia:
         specifier: ^3.0.3
         version: 3.0.3(vue@3.5.22)
+      pinia-plugin-persist:
+        specifier: ^1.0.0
+        version: 1.0.0(pinia@3.0.3(vue@3.5.22))(vue@3.5.22)
       querystring:
         specifier: ^0.2.1
         version: 0.2.1
@@ -1087,6 +1093,16 @@ packages:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
 
+  pinia-plugin-persist@1.0.0:
+    resolution: {integrity: sha512-M4hBBd8fz/GgNmUPaaUsC29y1M09lqbXrMAHcusVoU8xlQi1TqgkWnnhvMikZwr7Le/hVyMx8KUcumGGrR6GVw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0
+      pinia: ^2.0.0
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+
   pinia@3.0.3:
     resolution: {integrity: sha512-ttXO/InUULUXkMHpTdp9Fj4hLpD/2AoJdmAbAeW2yu1iy1k+pkFekQXw5VpC0/5p51IOR/jDaDRfRWRnMMsGOA==}
     peerDependencies:
@@ -1367,6 +1383,17 @@ packages:
       tsx:
         optional: true
       yaml:
+        optional: true
+
+  vue-demi@0.12.5:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==}
+    engines: {node: '>=12'}
+    hasBin: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
         optional: true
 
   vue-demi@0.14.10:
@@ -2436,6 +2463,12 @@ snapshots:
 
   picomatch@4.0.3: {}
 
+  pinia-plugin-persist@1.0.0(pinia@3.0.3(vue@3.5.22))(vue@3.5.22):
+    dependencies:
+      pinia: 3.0.3(vue@3.5.22)
+      vue: 3.5.22
+      vue-demi: 0.12.5(vue@3.5.22)
+
   pinia@3.0.3(vue@3.5.22):
     dependencies:
       '@vue/devtools-api': 7.7.7
@@ -2763,6 +2796,10 @@ snapshots:
       tinyglobby: 0.2.15
     optionalDependencies:
       fsevents: 2.3.3
+
+  vue-demi@0.12.5(vue@3.5.22):
+    dependencies:
+      vue: 3.5.22
 
   vue-demi@0.14.10(vue@3.5.22):
     dependencies:
